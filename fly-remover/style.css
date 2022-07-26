@@ -1,0 +1,18 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url('images/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#root{
+    width: 100vw;
+    height: 100vh;
+    cursor: url(images/slapper.png), default;
+}
+img{
+    width: 100px;
+}
+.slapped{
+    cursor: url(images/slapper2.png), default !important; 
+}
