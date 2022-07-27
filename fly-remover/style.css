@@ -10,9 +10,16 @@ body{
     height: 100vh;
     cursor: url(images/slapper.png), default;
 }
-img{
-    width: 100px;
-}
+
+/*slapper*/
 .slapped{
     cursor: url(images/slapper2.png), default !important; 
+}
+
+/*flies*/
+.fly{
+    position: fixed;
+}
+img{
+    width: 100px;
 }
