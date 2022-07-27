@@ -1,4 +1,6 @@
 let kills = 0;
+let gameStarted = false;
+let killCount = document.querySelector('#kill-count span');
 
 let root = document.getElementById('root');
 root.addEventListener('click', () => {
@@ -8,9 +10,22 @@ root.addEventListener('click', () => {
     }, 200)
 })
 
+let startText = document.createElement('img');
+startText.src = 'images/start-text.png';
+startText.classList.add('start-text');
+root.appendChild(startText); 
+
+setTimeout(() =>{
+    startText.classList.add('fadeOut')
+    setTimeout(() =>{
+        root.removeChild(startText);
+        gameStarted = true;
+    },2000)
+},2500)
 
 //fly spawn
 setInterval(() =>{
+    if(gameStarted){
     const height = randomIntFromInterval(10, 90)// y
     const width = randomIntFromInterval(10, 90)// x
     let fly = document.createElement('img');
@@ -21,18 +36,22 @@ setInterval(() =>{
     fly.style.top = height + 'vh';
     root.appendChild(fly);
 
-    document.querySelectorAll('.fly').forEach(x => x.addEventListener('click', () =>{
-        let path = x.src;
+   fly.addEventListener('click', () =>{
+        let path = fly.src;
         if (!path.includes('blood')) {
-            x.src= './images/blood-splash.png';
+            fly.src= './images/blood-splash.png';
             kills++;
-            console.log('kill');
+            killCount.textContent = kills;
             setTimeout(() =>{
-                x.style.display="none";
+                fly.classList.add('fadeOut');
+                setTimeout(() =>{
+                    root.removeChild(fly);
+                },2000)
             }, 1000)
         }
-       
-    }))
+    })
+}
+    
 }, 2000)
 
 

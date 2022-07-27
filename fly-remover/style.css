@@ -11,6 +11,35 @@ body{
     cursor: url(images/slapper.png), default;
 }
 
+/*starting text*/
+.start-text{
+    animation: fadeIn 1s linear;
+    width: 70%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*fade out animation*/
+.fadeOut{
+    animation: fadeOut 2s linear !important;
+}
+
+/*kill counter*/
+#kill-count{
+    float: right;
+    padding: 30px;
+    color: rgb(0, 45, 111);
+    font-weight: bold;
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#kill-count span{
+    color: rgb(255, 68, 68);
+    font-size: 40px
+}
+
 /*slapper*/
 .slapped{
     cursor: url(images/slapper2.png), default !important; 
@@ -19,7 +48,15 @@ body{
 /*flies*/
 .fly{
     position: fixed;
-}
-img{
     width: 100px;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; top: 100vh; }
+    80% { top: 45%; }
+    100% {opacity: 1; top: 50%}
+}
+@keyframes fadeOut {
+    from { opacity: 1;}
+    to {opacity: 0;}
 }
