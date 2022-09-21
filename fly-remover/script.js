@@ -79,7 +79,6 @@ setInterval(() =>{
     fly.style.top = height + 'vh';
     root.appendChild(fly);
     fliesCount++;
-    console.log(fliesCount);
 
     if (fliesCount >= 10) {
         died('killed');
@@ -91,7 +90,6 @@ setInterval(() =>{
     }
     killed = true;
     fliesCount--;
-    console.log(fliesCount);
         let path = fly.src;
         if (!path.includes('blood')) {
             fly.src= './images/blood-splash.png';
