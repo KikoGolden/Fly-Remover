@@ -20,7 +20,7 @@ setTimeout(() =>{
     setTimeout(() =>{
         root.removeChild(startText);
         gameStarted = true;
-    },2000)
+    },1999)
 },2500)
 
 //fly spawn
@@ -121,11 +121,12 @@ function died(){
         function reset(){
           kills = 0;
           dead= false;
-          diedtext.classList.add('fadeOut')
-          root.innerHTML = `<div id="kill-count">Kills: <span>${kills}</span></div>`;
+          diedtext.classList.add('fadeOut');
+          btn.classList.add('fadeOut');
           setTimeout(() =>{
              gameStarted = true;
-          },2000)
+             root.innerHTML = `<div id="kill-count">Kills: <span>${kills}</span></div>`;
+          },1999)
 }
 
 }
