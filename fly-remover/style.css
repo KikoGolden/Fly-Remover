@@ -4,6 +4,7 @@ body{
     background: url('images/bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    user-select: none;
 }
 #root{
     width: 100vw;
@@ -12,7 +13,7 @@ body{
 }
 
 /*starting text*/
-.start-text{
+.animate-text{
     animation: fadeIn 1s linear;
     width: 70%;
     position: fixed;
@@ -45,12 +46,44 @@ body{
     cursor: url(images/slapper2.png), default !important; 
 }
 
+/*butterfly*/
+.butterfly{
+    position: fixed;
+    width: 100px;
+    animation: spawn 0.7s linear;
+}
+.despawn{
+    animation: despawn 1.7s linear !important;
+}
+
 /*flies*/
 .fly{
     position: fixed;
     width: 100px;
+    animation: spawn 0.7s linear;
 }
 
+/*restart button*/
+button{
+    background-color: #fff ;
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: #ff0000;
+    border: 2px solid #ff0000;
+}
+button:hover{
+    cursor: pointer;
+    border: 2px solid #fff;
+    color: #fff;
+    background-color:  #ff0000;
+}
+
+/*animations*/
 @keyframes fadeIn {
     0% { opacity: 0; top: 100vh; }
     80% { top: 45%; }
@@ -59,4 +92,12 @@ body{
 @keyframes fadeOut {
     from { opacity: 1;}
     to {opacity: 0;}
+}
+@keyframes spawn {
+    from {transform: scale(0);}
+    to {transform: scale(1);}
+}
+@keyframes despawn {
+    from {transform: scale(1);}
+    to {transform: scale(0);}
 }
