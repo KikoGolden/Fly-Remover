@@ -1,6 +1,7 @@
 let kills = 0;
 let gameStarted = false;
 let dead = false;
+let fliesCount = 0;
 let root = document.getElementById('root');
 
 root.addEventListener('click', () => {
@@ -65,7 +66,7 @@ setInterval(() =>{
                         butterfly.classList.add('fadeOut');
                         setTimeout(() =>{
                                 root.removeChild(butterfly);
-                                died();
+                                died('trap');
                         },2000)
                     }, 1000)
                 }
@@ -77,12 +78,20 @@ setInterval(() =>{
     fly.style.left = width + 'vw';
     fly.style.top = height + 'vh';
     root.appendChild(fly);
+    fliesCount++;
+    console.log(fliesCount);
+
+    if (fliesCount >= 10) {
+        died('killed');
+    }
 
    fly.addEventListener('click', () =>{
     if (killed) {
         return;
     }
     killed = true;
+    fliesCount--;
+    console.log(fliesCount);
         let path = fly.src;
         if (!path.includes('blood')) {
             fly.src= './images/blood-splash.png';
@@ -100,15 +109,21 @@ setInterval(() =>{
 }
 }
     
-}, 2000)
+}, 1000)
 
 //died
-function died(){
+function died(reason){
     gameStarted = false;
     root.innerHTML = `<div id="kill-count">Kills: <span>${kills}</span></div>`;
 
     let diedtext = document.createElement('img');
-    diedtext.src = 'images/died-text.png';
+
+    if (reason == 'trap') {
+        diedtext.src = 'images/died-text.png';
+    }else if ( reason == 'killed'){
+        diedtext.src = 'images/killed-text.png';
+    }
+
     diedtext.classList.add('animate-text');
     root.appendChild(diedtext); 
 
@@ -119,6 +134,7 @@ function died(){
 
         //restart game
         function reset(){
+          fliesCount = 0;
           kills = 0;
           dead= false;
           diedtext.classList.add('fadeOut');
